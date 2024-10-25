@@ -1,0 +1,105 @@
+import openpyxl
+from datetime import datetime
+
+# Get today's date in YYYY-MM-DD format
+today_date = datetime.now().strftime("%d-%m-%Y")
+
+# Create a new Excel workbook
+workbook = openpyxl.Workbook()
+
+# Choose a specific sheet within the workbook
+sheet = workbook.active  # The default sheet created is named 'Sheet'
+
+# Data to be written
+data = [
+    (1, 21070127001, "AARAMBH MAHADEV PATIL"),
+    (2, 21070127002, "ADITI BHARGAVA"),
+    (3, 21070127003, "ADITYA MADHUSUDEN PANDEY"),
+    (4, 21070127004, "AKSHAT SRIVASTAVA"),
+    (5, 21070127005, "AKSHAYAA KASHYAP"),
+    (6, 21070127006, "AKSHAT MISHRA"),
+    (7, 21070127007, "AMAN BALLABH"),
+    (8, 21070127008, "AMANEET PAL SINGH BENIPAL"),
+    (9, 21070127009, "AMAY GUPTA"),
+    (10, 21070127010, "ANANYA KUSHA SHETTY"),
+    (11, 21070127011, "AARIN PANDEY"),
+    (12, 21070127012, "ARNAV DEOGHARE"),
+    (13, 21070127014, "ARYAN TIKONE"),
+    (14, 21070127015, "AARYA MISAL"),
+    (15, 21070127016, "BHARATH MANOJ CHARAVOOR"),
+    (16, 21070127017, "DANTULURI MANUSAHIL VARMA"),
+    (17, 21070127018, "DEV ZINZUVADIA"),
+    (18, 21070127019, "DHRUV ZADE"),
+    (19, 21070127020, "HARSHWARDHAN KULKARNI"),
+    (20, 21070127021, "JAI SONI"),
+    (21, 21070127065, "SIDDHANT UPADHYAYA"),
+    (22, 21070127068, "ATTARDE KHUSH JITENDRA"),
+    (23, 21070127502, "MANAV LADANI"),
+    (24, 21070127023, "KRISHI KEYUR SHAH"),
+    (25, 21070127024, "KHUSHI RAJAN KUMAR"),
+    (26, 21070127025, "KUMAR KARTIKEY"),
+    (27, 21070127027, "MEERA GOSWAMI"),
+    (28, 21070127028, "MISTRY KASHYAP ANANDBHAI"),
+    (29, 21070127030, "NANDAKUMAR R"),
+    (30, 21070127031, "NANDINI KHANDELWAL"),
+    (31, 21070127032, "NOUMAN MEHBOOB ALAM JINABADE"),
+    (32, 21070127033, "NOOR MANSOORALI HAMZA"),
+    (33, 21070127034, "PATHAK ATHARVA ATUL"),
+    (34, 21070127035, "PEEHU BAJAJ"),
+    (35, 21070127036, "PIDAPARTHI SAKET RISHI"),
+    (36, 21070127037, "PRIYANSU SAHA"),
+    (37, 21070127039, "RUGHANI MANAN HITESH"),
+    (38, 21070127040, "RUGVED VIVEK TAMHAN"),
+    (39, 21070127041, "SADHANA SHARMA"),
+    (40, 21070127042, "SAKSHAM GALHOTRA"),
+    (41, 21070127066, "SANSKAR PATIL"),
+    (42, 21070127070, "AARUSHI RAJEDERKAR"),
+    (43, 21070127503, "NALLAMOTHU TANISH"),
+    (44, 21070127504, "PARANJAY NB"),
+    (45, 21070127043, "SAKSHAM RATHI"),
+    (46, 21070127046, "SATYAM MALHOTRA"),
+    (47, 21070127048, "SHOURYA SANDEEP SHARMA"),
+    (48, 21070127052, "TANUJ OHRI"),
+    (49, 21070127054, "TARUSH YADAV"),
+    (50, 21070127055, "UTKARSH RASTOGI"),
+    (51, 21070127056, "VAAREN JAYDEEP NAWAGEKAR"),
+    (52, 21070127057, "VAIBHAV SATPUTE"),
+    (53, 21070127059, "VEDANT POPAT MATE"),
+    (54, 21070127060, "WAMAN PARTH"),
+    (55, 21070127061, "YASH MALI"),
+    (56, 21070127062, "BISHWAYAN SARKAR"),
+    (57, 21070127063, "AVANISH SHIMPI"),
+    (58, 21070127064, "SHRUTI GUPTA"),
+    (59, 21070127067, "ADITHYA R KUMAR"),
+    (60, 21070127069, "DEDGE PARTH SAGAR"),
+    (61, 21070127071, "DHANANJAY NARENDRA RANPISE"),
+    (62, 21070127072, "DHRUV ARORA"),
+    (63, 21070127073, "SHIMPALI RAJE"),
+    (64, 21070127505, "PETHKAR ATHARVA MILIND"),
+    (65, 21070127501, "HRISHIKESH MANDAR KARANDIKAR"),
+    (66, 21070127506, "SIDDHARTH SURENDRA MHATRE"),
+]
+
+# Write the data to cells
+for row_idx, row_data in enumerate(data, start=3):
+    for col_idx, value in enumerate(row_data, start=1):
+        cell = sheet.cell(row=row_idx, column=col_idx, value=value)
+
+for row in range(2, 69):
+    sheet.merge_cells(f"H{row}:I{row}")
+
+sheet.merge_cells("D1:K1")
+sheet["D1"] = "B. Tech. R. & A. 3rd year"
+sheet["D2"] = "8:45-9:45"
+sheet["E2"] = "9:45-10:45"
+sheet["F2"] = "10:45-11:45"
+sheet["G2"] = "LUNCH"
+sheet["H2"] = "12:45-2:35"
+sheet["J2"] = "2:35-3:30"
+sheet["K2"] = "3:30-4:25"
+# Save the workbook with today's date as the filename
+file_name = f"{today_date}.xlsx"
+workbook.save(file_name)
+
+# Close the workbook when done
+
